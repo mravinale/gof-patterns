@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Proxy {
+
+    /// <summary>
+    /// The 'Proxy' class
+    /// </summary>
+    class Proxy : Subject {
+        private RealSubject _realSubject;
+
+        public override void Request() {
+            // Use 'lazy initialization'
+            if (_realSubject == null) {
+                _realSubject = new RealSubject();
+            }
+
+            _realSubject.Request();
+        }
+    }
+}
